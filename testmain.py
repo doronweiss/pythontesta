@@ -17,9 +17,15 @@ for i in range(10):
 for i in range(10):
     print str(objs[i].v1)
 """
-cr = Car(weight=870)
-#cr.weight=870
-print (str(cr.speed()))
-cr = Car(weight=2000)
-#cr.weight=870
-print (str(cr.speed()))
+# cr = Car(weight=870)
+# #cr.weight=870
+# print (str(cr.speed()))
+# cr = Car(weight=2000)
+# #cr.weight=870
+# print (str(cr.speed()))
+
+# for i in range(64):
+#     print ("plcData[{0}] = plc1Data[0]; // ".format(i))
+
+for i in range (100):
+    print("public short data{0} {{set; get;}}".format(i))
