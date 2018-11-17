@@ -1,5 +1,6 @@
 import time
 import numpy as np
+import scipy.integrate as spint
 import matplotlib.pyplot as plt
 
 
@@ -46,3 +47,11 @@ for i in r:
 plt.plot(x, y)
 plt.ylabel('Sinus')
 #plt.show()
+
+f= lambda x:np.sin(x)
+
+def myf (x):
+    return np.sin(x)
+
+i = spint.quad(myf, 0, np.pi)
+print ("Integration: i= {}".format(i))
