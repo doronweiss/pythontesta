@@ -1,12 +1,19 @@
 import string
 
 data="""
-      redSetter.value = plansMgr.currDisplayed.red;
-      greenSetter.value = plansMgr.currDisplayed.green;
-      whiteSetter.value = plansMgr.currDisplayed.white;
-      blueSetter.value = plansMgr.currDisplayed.blue;
-      centerSetter.value = plansMgr.currDisplayed.center;
-      dimmingSetter.value = plansMgr.currDisplayed.dimmingPercent;
+      resolutionNUD.Value = (int)profCfg.resolution;
+      bufferCountNUD.Value = (int)profCfg.bufferCount;
+      packetSizeNUD.Value = (int)profCfg.packetSize;
+      shutterTimeNUD.Value = (int)profCfg.shutterTime;
+      idleTimeNUD.Value = (int)profCfg.idleTime;
+      measDataThresholdNUD.Value = (int)profCfg.measDataThreshold;
+      laserPowerNUD.Value = (int)profCfg.laserPower;
+      measurmentFieldNUD.Value = (int)profCfg.measurmentField;
+      profileDataNUD.Value = (int)profCfg.profileData;
+      maintenanceFunctionsNUD.Value = (int)profCfg.maintenanceFunctions;
+      profileFilterNUD.Value = (int)profCfg.profileFilter;
+      sharpnessNUD.Value = (int)profCfg.sharpness;
+      mainReflectionNUD.Value = (int)profCfg.mainReflection;
 """
 
 data2="""
@@ -65,4 +72,5 @@ def nanopassAssigner (str):
         print ("%s=vValid? visData.%s : \"\", "%(line,line))
 
 
-nanopassAssigner(data2)
+#nanopassAssigner(data2)
+assignmentChanger(data)
