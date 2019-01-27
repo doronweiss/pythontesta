@@ -48,10 +48,15 @@ plt.plot(x, y)
 plt.ylabel('Sinus')
 #plt.show()
 
-f= lambda x:np.sin(x)
+f= lambda x:x*x
 
 def myf (x):
     return np.sin(x)
 
+print ("Lambda 30 = {0}".format(f(30)))
+
 i = spint.quad(myf, 0, np.pi)
 print ("Integration: i= {}".format(i))
+i = spint.quad(lambda z: np.sin(z), 0, np.pi)
+print ("lambga Integration: i= {}".format(i))
+
