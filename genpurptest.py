@@ -5,3 +5,7 @@ item=next(it, None)
 while item is not None:
     print (item)
     item = next(it, None)
+
+factors = lambda  n: [x for x in range (1,n+1) if n % x ==0]
+
+print ("{0}".format(factors(15)))
