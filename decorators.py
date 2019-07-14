@@ -11,9 +11,9 @@ class testclass (object):
 
 
 def mydec(func):
-    def wrapper_do_twice():
-        func()
-        func()
+    def wrapper_do_twice(s):
+        func(s)
+        func(s)
     return wrapper_do_twice
 
 @mydec
@@ -23,4 +23,4 @@ def prrr(s):
 tc = testclass(3)
 tc.show()
 tc.showagain()
-prrr("sdskjdksdj")
+prrr("doron weiss")
