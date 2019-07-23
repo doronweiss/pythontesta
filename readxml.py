@@ -2,7 +2,7 @@ import sys
 import xml.etree.ElementTree as ET
 
 # https://docs.python.org/2/library/xml.etree.elementtree.html#module-xml.etree.ElementTree
-fpath='c:/Users/User/AppData/Local/servotronix/SoftMC Configurator/ConfigPackages/0.4.17.1r6/robots/standard/pumaprops.xml'
+fpath='c:/Users/User/AppData/Local/servotronix/SoftMC Configurator/ConfigPackages/0.4.18.2/robots/standard/pumaprops.xml'
 try:
     tree = ET.parse(fpath)
 except:
