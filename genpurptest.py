@@ -1,11 +1,10 @@
-r = range (10)  # type: range
-#r=[1,2,3,4,5,6,7,8,9]
-it = iter(r)
-item=next(it, None)
-while item is not None:
-    print (item)
-    item = next(it, None)
+data = ["Id  ", "HoleNum  ", "NozzleType  ", "x  ", "y  ", "ATPGroup  ", "InsertionDT  "]
+data.extend(["InsertionForce  ", "InsertionForcePass  ", "P1SResult  ", "P2SResult  ", "P2Pass  "])
+data.extend(["P2TestDT  ", "P4Result  ", "P4SResult  ", "P4Pass ", "P4TestDT  ", "Faulted  ", "ErrorReason  "])
+data.extend(["IsLong  ", "actualX  ", "actualY  ", "TraySN  ", "TrayPosition  ", "forceFailsQty  "])
+data.extend(["batchNum  ", "trayRerunNum  ", "M1P1Result  ", "M1P2Result  ", "M1NozzleAddressInTray  "])
+data.extend(["insertionTemperature  ", "P3Result  ", "P3SResult  ", "P3Pass  ", "P3TestDT  "])
+data.extend(["pressureFailsQty  ", "pressureFailsQty4  ", "pressureFailsQty3  ", "PlatesId  "])
 
-factors = lambda  n: [x for x in range (1,n+1) if n % x ==0]
-
-print ("{0}".format(factors(15)))
+for str in data:
+    print ('<GridViewColumn Header="{0}" DisplayMemberBinding="{{Binding Path = {0} }}" />'.format(str.strip()))
