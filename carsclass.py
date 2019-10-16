@@ -1,5 +1,5 @@
 class Car(object):
-    weight=1200
+    #weight: int=1200
 
     def __init__(self, weight):
         self.weight=weight
