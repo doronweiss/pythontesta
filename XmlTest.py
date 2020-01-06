@@ -1,7 +1,7 @@
 import sys
 import xml.etree.ElementTree as ET
 
-fpath='c:/tries/Matlab/test1.xml '
+fpath='c:/Projects/Weldobot/temp/workplan.wpln'
 try:
     tree = ET.parse(fpath)
 except Exception as e:
