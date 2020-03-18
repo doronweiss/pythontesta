@@ -14,10 +14,29 @@ import os
 #         for fname in fileList:
 #             print('\t%s' % fname)
 
+def legalFolder (root, fldr):
+    if fldr[0]=='.':
+        return False
+    fn = os.path.join(root, fldr)
+    res = os.path.isdir(fn)
+    return res
+
+def legalFile (root, file, ext):
+    fn, fx = os.path.splitext(file)
+    if fx!=ext:
+        return False
+    fn = os.path.join(root, file)
+    res = os.path.isfile(fn)
+    return res
+
 def traverse (root):
-    dirs = list(filter(lambda x: os.path.isdir(x), os.listdir(root)))
-    files = list(filter(lambda x: os.path.isfile(x), os.listdir(root)))
-    print ("{}".format(",".join(dirs)))
-    print ("{}".format(",".join(files)))
+    dirs = [x for x in os.listdir(root) if legalFolder(root, x)]
+    files = [x for x in os.listdir(root) if legalFile(root, x, ".cs")]
+    if len(dirs)>0:
+        print ("{}\n".format(", ".join(dirs)))
+    if len(files)>0:
+        print ("{}\n".format(", ".join(files)))
+    for dir in dirs:
+        traverse (os.path.join(root, dir))
 
 traverse(r'c:\Projects\Weldobot\AROW')
