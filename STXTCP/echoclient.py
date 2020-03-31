@@ -9,14 +9,16 @@ crcAlg = crcengine.new('crc16-modbus')
 def calcCrc (data):
     return crcAlg(data)
 
-def makebuff(s:str)->bytes:
-    buff = [b'\xFF', b'\xFF']
+def makebuff(s:str):
     bts = bytearray(s,'ascii')
     l = len(bts)
-    szb = l.to_bytes(4, byteorder='little')[0]
-    bts.append(szb)
+    buff = bytearray(3)
+    buff[0]=255
+    buff[1]=255
+    buff[2]=l
     buff.extend(bts)
     crc = calcCrc(bts[3:])
+    print ("crc = {}".format(crc))
     crcb = crc.to_bytes(2, byteorder='little')
     buff.extend(crcb)
     return buff
@@ -25,9 +27,10 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
     str = "Hello, World"
     buff = makebuff (str)
-    #print (repr(buff))
     s.sendall(buff)
     s.close()
+
+
     # str = "my name is doron weiss"
     # buff = makebuff (str)
     # print (repr(buff))
