@@ -17,17 +17,19 @@ def makebuff(s:str):
     buff[1]=255
     buff[2]=l
     buff.extend(bts)
-    crc = calcCrc(bts[3:])
-    print ("crc = {}".format(crc))
+    crc = calcCrc(bts)
     crcb = crc.to_bytes(2, byteorder='little')
+    print ("crc = {}  [{}, {}]".format(crc, crcb[0], crcb[1]))
     buff.extend(crcb)
     return buff
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
-    str = "Hello, World"
-    buff = makebuff (str)
-    s.sendall(buff)
+    str =  input("Enter your text: ")
+    while str != "q":
+        buff = makebuff (str)
+        s.sendall(buff)
+        str = input("Enter your text: ")
     s.close()
 
 
