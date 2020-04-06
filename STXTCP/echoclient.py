@@ -25,11 +25,11 @@ def makebuff(s:str):
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.connect((HOST, PORT))
-    str =  input("Enter your text: ")
+    txt = "Saying hello"
     while str != "q":
-        buff = makebuff (str)
+        buff = makebuff (txt)
         s.sendall(buff)
-        str = input("Enter your text: ")
+        txt = input("Enter your text: ")
     s.close()
 
 
