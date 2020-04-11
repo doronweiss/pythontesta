@@ -1,7 +1,13 @@
-import time
+import time, sys
 import numpy as np
 import scipy.integrate as spint
 import matplotlib.pyplot as plt
+
+a1 = np.array([1,2,3])
+a2=np.array([2,3,4])
+print ("Element wise => {}".format(a1*a2))
+print ("LinAlg wise => {}".format(a1@a2))
+sys.exit(0)
 
 
 print ("Version: %s"%(np.__version__))
@@ -11,7 +17,7 @@ a=30
 d2r=np.pi/180.0
 ar=a*d2r
 
-tmat=np.matrix ([[np.cos(ar), np.sin(ar),1], [-np.sin(ar), np.cos(ar), 1], [np.sin(ar), -np.cos(ar), 1]])
+tmat=np.array([[np.cos(ar), np.sin(ar),1], [-np.sin(ar), np.cos(ar), 1], [np.sin(ar), -np.cos(ar), 1]])
 #a = np.matrix([[1,2,3],[3,4,5],[1,0,13]])
 print (tmat)
 print ("Mat mult :")
@@ -24,7 +30,7 @@ cnt=100
 start = time.time()
 for i in range(1,cnt):
     c = tmat*tmat;
-print ("Matrix mult %d times, Elapsed: %s"%(cnt, time.time() - start))
+print ("Matrix mult {} times, Elapsed: {} => {}".format (cnt, time.time() - start, c))
 
 
 
@@ -32,7 +38,7 @@ start = time.time()
 
 vec = np.array ([1.0, 0.0, 0.0])
 vec2 = np.array ([0.0, 1.0, 0.0])
-print (tmat.dot(vec))
+print (tmat@vec)
 print (np.cross(vec,vec2))
 
 print ("Elapsed: %s"%(time.time() - start))
