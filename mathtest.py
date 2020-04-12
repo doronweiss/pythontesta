@@ -3,6 +3,7 @@ import numpy as np
 import scipy.integrate as spint
 import matplotlib.pyplot as plt
 
+print("Version: %s" % (np.__version__))
 a1 = np.array([1, 2, 3])
 a2 = np.array([2, 3, 4])
 print("Element wise => {}".format(a1 * a2))
@@ -13,7 +14,6 @@ ah = np.hstack((a1, a2))
 print("ah => {}".format(ah))
 sys.exit(0)
 
-print("Version: %s" % (np.__version__))
 
 a = 30
 
