@@ -1,6 +1,6 @@
 import re
 
-data="""
+data = """
 Reserved CW
 Mode of operation
 Command
@@ -26,21 +26,22 @@ Absolute Target position
 Relative Distance
 """
 
-def line2Vars(lines, rx):
-    vars=[]
+
+def line2Vars(lines, rx=""):
+    vars = []
     for line in lines:
         if len(line.strip()) == 0:
             continue
-        nln = re.sub(rx, '', line.strip())
+        nln = re.sub(rx, '', line.strip()) if rx != "" else line.strip()
         parts = [ln.capitalize() for ln in nln.split(' ') if len(ln) > 0]
         res = ''.join(parts)
-        #print (res)
+        # print (res)
         vars.append(res)
     return vars
 
-rx = "SW\.+[0-9]+"
-lines = data.split('\n')
-res = line2Vars(lines, rx)
-for str in res:
-    print (str)
-
+if __name__ == "__main__":
+    rx = "SW\.+[0-9]+"
+    lines = data.split('\n')
+    res = line2Vars(lines, rx)
+    for str in res:
+        print(str)
