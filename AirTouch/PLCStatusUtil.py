@@ -1,20 +1,20 @@
 data="""
-sysOkMask = BitVector16.CreateMask();
-ackMask = BitVector16.CreateMask(sysOkMask);
-systemBusyMask = BitVector16.CreateMask(ackMask);
-readyForTargetMask = BitVector16.CreateMask(systemBusyMask);
-trolleyInTargetMask = BitVector16.CreateMask(readyForTargetMask);
-readyForTransferMask = BitVector16.CreateMask(trolleyInTargetMask);
-robotExistMask = BitVector16.CreateMask(readyForTransferMask);
-homeSeqDoneMask = BitVector16.CreateMask(robotExistMask);
-atAutoMask = BitVector16.CreateMask(homeSeqDoneMask);
-robotOnMiddleMask = BitVector16.CreateMask(atAutoMask);
-res1Mask = BitVector16.CreateMask(robotOnMiddleMask);
-res2Mask = BitVector16.CreateMask(res1Mask);
-resetAckMaskMask = BitVector16.CreateMask(res2Mask);
-targetNotFoundMask = BitVector16.CreateMask(resetAckMaskMask);
-EMPressedMask = BitVector16.CreateMask(targetNotFoundMask);
-SWWatchDogMask = BitVector16.CreateMask(EMPressedMask);
+    gotoTargetMask = BitVector16.CreateMask();
+    startProcessMask = BitVector16.CreateMask(gotoTargetMask);
+    goToChargeCmdMask = BitVector16.CreateMask(startProcessMask);
+    StartHomeCmdMask = BitVector16.CreateMask(goToChargeCmdMask);
+    goHomeCmdMask = BitVector16.CreateMask(StartHomeCmdMask);
+    disengageCmdMask = BitVector16.CreateMask(goHomeCmdMask);
+    firstCycleMask = BitVector16.CreateMask(disengageCmdMask);
+    autoCmdMask = BitVector16.CreateMask(firstCycleMask);
+    arolleyJumpMask = BitVector16.CreateMask(autoCmdMask);
+    res1Mask = BitVector16.CreateMask(arolleyJumpMask);
+    res2Mask = BitVector16.CreateMask(res1Mask);
+    res3Mask = BitVector16.CreateMask(res2Mask);
+    res4Mask = BitVector16.CreateMask(res3Mask);
+    res5Mask = BitVector16.CreateMask(res4Mask);
+    resetErrorsMask = BitVector16.CreateMask(res5Mask);
+    watchDogMask = BitVector16.CreateMask(resetErrorsMask);
 """
 
 
@@ -29,4 +29,7 @@ for line in lines:
     idx = maskName.find("Mask")
     methName=maskName[0:idx]
     methName = methName[0].capitalize() + methName[1:]
-    print("public bool {0} => state[{1}];".format(methName, maskName))
+    # getter
+    #print("public bool {0} => state[{1}];".format(methName, maskName))
+    #setter
+    print("public bool {0} {{set => state[{1}] = value;}}".format(methName, maskName))
