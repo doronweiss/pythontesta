@@ -1,9 +1,11 @@
 import sys
 
 data="""
-  VOLTAGE_STATE_BAD = 0,
-  VOLTAGE_STATE_GOOD=1,
-  VOLTAGE_STATE_UNKNOWN=2
+   STATE_END_OF_MULTICYCLE_START_OF_TABLE
+    STATE_END_OF_MULTICYCLE_END_OF_TABLE
+    STATE_OBSTACLE_HANDLING_PREPARE
+    STATE_OBSTACLE_HANDLING_ACTIVE
+    STATE_FULLY_STOPPED
 """
 
 print ("What do you want to do ?:\n")
@@ -20,7 +22,7 @@ lines = [ln for ln in data.split('\n') if len(ln)>0]
 for line in lines:
     if len(line) == 0:
         continue
-    parts = line.split('=')
+    parts = line.split('_')
     if len(parts)<2:
         continue
     maskName = parts[0].strip().strip(',')
