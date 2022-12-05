@@ -1,71 +1,51 @@
 import sys
 
 data="""
-(general),0,No error,0
-(search panel),3,no home,1
-(search panel),3,no prepare,2
-(search panel),1,Trolley didnt reach the target,3
-(search panel),1,Error with approach motor when going to pre engage position,4
-(search panel),-1,Column didnt start move on time,5
-(search panel),-1,Column is above high limit for chosen row,6
-(search panel),-1,Error with approach when going to fine tuning  position,7
-(search panel),3,delta column is 0; probobly no column hight parmeter is enterd,8
-(search panel),-1,Angle motor is out of limit,9
-(search panel),-1,trolly err when going up to touch panel,10
-(search panel),-1,one angle sensor is above high limit,11
-(final attached),3,No home,12
-(final attached),-1,Panel search didnt finish good,13
-(final attached),-1,Approach is above high limit,14
-(final attached),-1,only attached sens up is on,15
-(final attached),-1,only attached sens down is on,16
-(final attached),-1,error with aproach when trying to go to final position,17
-(trolley),2,Did not find flag sensor after seconed try,18
-(trolley),3,Tolley Target out of limit,19
-(home),1,Error with Trolley motor in home,20
-(home),1,Error with Angle motor in home,21
-(home),1,Error with Approach motor in home,22
-(home),1,Error with column motor in home,23
-(prepare),1,Error with Approach motor in prepare,24
-(prepare),1,Error with Angle motor in prepare,25
-(prepare),1,Error with column motor in prepare,26
-(final attached),1,error with approch when moving back if traker move,27
-,1,EM Is Press,28
-(final attached),1,both fixed are on,29
-(final attached),1,column err when try to sit on panel,30
-(final attached),1,Trolley err when try to sit on panel,31
-(trolley),2,Did not find flag sensor after seconed try back,32
-(final attached),-1,column high limit err,33
-(search panel),1,approach motor error when trying to go back to fix angle if analog sensor touched the panel,34
-(search panel),1,angle motor error when trying to fix after analog touch in first approach,35
-(Disengage),1,column motor error in disengage,36
-(Disengage),1,approach motor error in disengage,37
-(search panel),2,Search panel time out,38
-(final attached),2,Final attached time out,39
-(prepare),1,Prepare time out,40
-(trolley jump),1,trolly motor err,41
-(Disengage),1,Angle motor err,42
-(Disengage),1,disangage TO,43
-(home),1,1 attached sensor is on during angle home,44
-(home),1,1 attached sensor is on during approach home,45
-(home),1,1 attached sensor is on during column home,46
-(home),1,1 attached sensor is on during trolley home,47
-(search panel),2,column motor error when trying to fix after analog touch in first approach,48
-(search panel),2,Down limit is on,49
-(search panel),2,Up limit is on,50
-(search panel),2,to many angle fixed in first approach,51
-(TBD),-1,angle error in drive pos,52
-(TBD),-1,column error in drive pos,53
-(TBD),-1,drive pos time out,54
-,,,
-(search panel),3,front analog sens is over resting value,100
-(search panel),3,back analog sens is over resting value,101
-(search panel),3,front attached sens is on,102
-(search panel),3,back attached sens is on,103
-(search panel),3,front fixed sens is on,104
-(search panel),3,back analog fix sens is above flat position,105
-,,,
-(TBD),-1,wheel encoder sens stuck,110
-(TBD),-1,wheel encoder sens slid,111
+Description,Type,Name,value
+emergency circuit broken during operation,1,EmergencyCircuit,1
+trolley motor at error,1,TrolleyMotor,2
+angle motor at error,1,AngleMotor,3
+approach motor at error,1,ApproachMotor,4
+column motor at error,1,ColumnMotor,5
+Trolley failed to reach target - TO,1,TrolleyTO,11
+Angle failed to reach target - TO,1,AngleTO,12
+Approach failed to reach target - TO,1,ApproachTO,13
+Column failed to reach target - TO,1,ColumnTO,14
+homing time-out,-1,HomingTO,21
+Find the row (go to target) time-out,2,GoToTargetTO,22
+Engage (Search + final attach) panel time-out,2,EngageTO,23
+Disangage time-out,2,DisangageTO,24
+Prepare time out,-1,PrepareTO,25
+Search time out (this sequence is part of Engage sequence),1,SearchTO,26
+can not start any sequence - need to do homing first,-1,HomeIsMissing,101
+can not move trolley - approach not at center (need to disengage first),-1,ApproachNotAtCenter,102
+need to do prepare first (Only relevant when operating through a HMI),-1,PrepareIsMissingInSearch,103
+can not start final attach - need to do search for panel first,-1,AtErrorFromSearchInFinalAttach,104
+can not start engage - trolley not at target,,TrolleyNotAtTarget,105
+can not start search sequence - the front antenna analog value is over idel level ,1,FrontAntennaNotAtIdel,105
+can not start search sequence - the Rear antenna analog value is over idel level ,1,BackAntennaNotAtIdel,106
+can not start search sequence - the front attached sensor is ON ,1,FrontAttachedNotAtIdel,107
+can not start search sequence - the Rear attached sensor is ON ,1,RearAttachedNotAtIdel,108
+can not start search sequence - the front fiexd(digital wheel) sensor is ON ,1,FrontFixedNotAtIdel,109
+can not start search sequence - the Rear fiexd(analog wheel) sensor is over the engage position,1,RearFixedNotAtIdel,110
+column reached max limit allowed for this row,2,ColumnTooHigh,201
+angle actual position is out of software limits,2,AngleOutOfLimits,202
+atleast one of the antenna sensor is out of allowed range,,AntennaSensorOutOfRange,203
+approach reach the limit allowad for this row and did not find the panel,3,ApproachOutOfRange,204
+attach sensor in the front level is missing(only Rear sensor is ON),,AttachSensFrontIsMissing,205
+attach sensor in the Rear level is missing(only front sensor is ON),,AttachSensRearIsMissing,206
+trolley target is out of limits,3,TrolleyTargetOutOfLimit,207
+column actual position crossed the up limit (hard stop),3,ColumnOutOfLimits,208
+attached sensor is on during homing,5,HomeAngleInterference,209
+attached sensor is on during homing,5,HomeApproachInterference,210
+attached sensor is on during homing,5,HomeColumnInterference,211
+attached sensor is on during homing,5,HomeTrolleyInterference,212
+the antenna sensor meets the panel while the approach moves to target target,3,ApproachTargetTooCloseToPanel,213
+angle at one of the sensors limit,,AngleAtHardLimit,214
+the angle is dancing around the panel - can not stabilizing on the panel,,AngleCanNotAlignToPanel,215
+the trolley did not find the row flag,3,TrolleyFlagIsMissing,221
+idel wheel stuck - the encoder (4 ppr) not moving ,5,TrolleyWheelStuck,222
+idel wheel slide - the encoder (4 ppr) rotates slowly compared to the driven wheel,5,TrolleyWheelSlid,223
 """
 
 lines = [ln for ln in data.split('\n') if len(ln)>0]
