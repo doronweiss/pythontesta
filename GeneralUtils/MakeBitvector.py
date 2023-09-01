@@ -1,22 +1,35 @@
 import words2vars as w2v
+# lowLevelSensorStatusA1
+# lowLevelSensorStatusA2
+# lowLevelSensorStatusB1
+# lowLevelSensorStatusB2
+# barrelIsAboutToBeEmptyA1
+# barrelIsAboutToBeEmptyA2
+# barrelIsAboutToBeEmptyB1
+# barrelIsAboutToBeEmptyB2
+# barrelReplaceCommandStatusA1
+# barrelReplaceCommandStatusA2
+# barrelReplaceCommandStatusB1
+# barrelReplaceCommandStatusB2
+# barrelReplacedA1
+# barrelReplacedA2
+# barrelReplacedB1
+# barrelReplacedB2
+# """
 
 data="""
-SW.0 Feeder 1 refill completed
-SW.1 Feeder 2 refill completed
-SW.2 Feeder 3 refill completed
-SW.3 Feeder 1 purge completed
-SW.4 Feeder 2 purge completed
-SW.5 Feeder 3 purge completed
-SW.6 res1
-SW.7 res2
-SW.8 res3
-SW.9 res4
-SW.10 res5
-SW.11 res6
-SW.12 res7
-SW.13 res8
-SW.14 res9
-SW.15 res10
+    mixerStatusA1
+    mixerStatusA2
+    pumpStatusA1
+    pumpStatusA2
+    pumpStatusB1
+    pumpStatusB2
+    pumpRunCommandForBleedingStatusA2
+    pumpRunCommandForBleedingStatusA1
+    bleedingPushButtonStatusA1
+    bleedingPushButtonStatusA2
+    bleedingValveStatusA1
+    bleedingValveStatusA2
 """
 
 rawlines = data.split('\n')
