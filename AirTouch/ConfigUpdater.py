@@ -1,8 +1,8 @@
 import sys
 import xml.etree.ElementTree as ET
 
-fpath='c:/Projects/AirTouch/CarMk2.5/run_dir/carconfigptn.xml'
-fpatho='c:/Projects/AirTouch/CarMk2.5/run_dir/carconfigptnooo.xml'
+fpath='c:/temp/ptest/carconfig.xml'
+fpatho='c:/temp/ptest/carconfigout.xml'
 try:
     tree = ET.parse(fpath)
 except Exception as e:
