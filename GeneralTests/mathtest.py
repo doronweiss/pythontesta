@@ -12,7 +12,7 @@ av = np.vstack((a1, a2))
 print("av => {}".format(av))
 ah = np.hstack((a1, a2))
 print("ah => {}".format(ah))
-sys.exit(0)
+#sys.exit(0)
 
 
 a = 30
